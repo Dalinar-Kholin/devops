@@ -1,0 +1,17 @@
+FROM ubuntu:latest AS build
+RUN groupadd -r smok && useradd --no-log-init -r -g smok -m -d /home/smok -s /usr/sbin/bash smok
+
+COPY smok.sh /home/smok/smok.sh
+USER smok
+
+WORKDIR /home/smok
+
+RUN dd if=/dev/urandom of=duzyPlik bs=1M count=100
+RUN rm duzyPlik
+
+FROM ubuntu:latest AS final
+
+WORKDIR /app
+COPY --from=build /home/smok .
+
+CMD ["./smok.sh"]
