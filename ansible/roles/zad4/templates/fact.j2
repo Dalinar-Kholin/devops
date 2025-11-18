@@ -1,0 +1,9 @@
+{% macro fact(n) -%}
+  {% set n_int = n | int %}
+  {% if n_int <= 1 %}
+    {{ 1 }}
+  {% else %}
+    {% set sub = fact(n_int - 1) | int %}
+    {{ n_int * sub }}
+  {% endif %}
+{%- endmacro %}

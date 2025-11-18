@@ -1,0 +1,6 @@
+- name: Simple lab playbook
+  hosts: lab
+  become: yes
+  roles:
+    - zad4
+

@@ -1,0 +1,24 @@
+services:
+  node1:
+    build: .
+    container_name: ansible-node1
+    ports:
+      - "2222:22"
+      - "8080:80"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+
+  node2:
+    build: .
+    container_name: ansible-node2
+    ports:
+      - "2223:22"
+      - "8081:80"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M

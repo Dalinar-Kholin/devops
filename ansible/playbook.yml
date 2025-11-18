@@ -1,0 +1,19 @@
+- name: Simple lab playbook
+  hosts: lab
+  become: yes
+  tasks:
+    - name: Check connectivity (ping module)
+      ansible.builtin.ping:
+
+    - name: Call queen
+      zad2:
+        type: "queen"
+        value: 5
+      register: zad2_result
+
+    - debug:
+        var: zad2_result.res
+
+
+
+# psprawdzenie dokumentacji w ansible-doc -M library zad2

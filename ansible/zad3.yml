@@ -1,0 +1,51 @@
+- name: Tasks only on control host
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: start docker
+      shell: docker compose up -d
+
+
+- name: async server
+  hosts: lab
+  become: yes
+  tasks:
+    - name: zero file
+      async: 120
+      poll: 0 # if poll == 0 task is run as background
+      shell: sleep 15; touch nice.zero #dd if=/dev/zero of=file.zero bs=1M count=100
+      register: zero_job
+
+    - name: download curl
+      ansible.builtin.apt:
+        name: curl
+        state: present
+        update_cache: yes
+
+    - name: download remotegrity
+      command: curl -o remotegrity "https://eprint.iacr.org/2013/214.pdf"
+      async: 120
+      poll: 0 # if poll == 0 task is run as background
+      register: curl_job
+
+    - name: Wait for both jobs
+      vars:
+        jobs:
+          - "{{ zero_job.ansible_job_id }}"
+          - "{{ curl_job.ansible_job_id }}"
+      async_status:
+        jid: "{{ item }}"
+      register: status
+      until: status.finished
+      retries: 60
+      delay: 5
+      loop: "{{ jobs }}"
+
+- name: stop docker
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: stop docker
+      shell: docker compose down

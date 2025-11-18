@@ -1,0 +1,8 @@
+- name: Call queen
+  zad2:
+    type: "queen"
+    value: "{{ lookup('ansible.builtin.template', 'makro.j2', template_vars={'n': queens }) | trim | int }}"
+  register: zad2_result
+
+- debug:
+    var: zad2_result

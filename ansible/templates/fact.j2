@@ -1,0 +1,7 @@
+{% macro fact(n) -%}
+  {%- if n <= 1 -%}
+  {{ 1 | int}}
+  {%- else -%}
+  {{ n * fact(n-1) | int }}
+  {%- endif -%}
+  {%- endmacro %}

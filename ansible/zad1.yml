@@ -1,0 +1,31 @@
+- name: async server
+  hosts: lab
+  become: yes
+  gather_facts: no # inaczej wywali się przed pingiem
+  tasks:
+    - name: Check connectivity
+      ansible.builtin.ping:
+      register: ping_result
+      ignore_unreachable: yes
+      ignore_errors: yes
+
+    - name: print
+      debug:
+        msg: "{{ ping_result }}"
+
+    - name: Handle ping failure
+      ansible.builtin.shell: docker compose up -d
+      delegate_to: localhost
+      run_once: true
+      become: no
+      when:
+        - ping_result is failed or (ping_result.unreachable | default(false))
+
+- name: stop docker
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: stop docker
+      run_once: true
+      shell: docker compose down
