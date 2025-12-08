@@ -1,0 +1,15 @@
+jest to framework do wporwadzania zmain w organizacji
+kurt dzieli zmiany na 3 etapy
+unfreez, change, freez --> w ogólności zakłada on że domyślnie zespoły działają w niezmiennie dopóki się ich nie zmieni
+
+etap unfreez: -> jest to etap przygotowywania do zmiany
+w tym etapie
+jest to etap uświadamiania dlaczego zmiany muszą zostac wprowadzone oraz przekownywanie innych do chcęci przyjęcia zmian
+
+change: -> sama zmiana
+w tym etapie wprowadzane są zmiany jako takie
+
+freez: zestalenie zmian na stałe
+
+w tym etapie wprowadzamy dokumentacje, nagradzamy za stosowanie się do nowych zasad itp
+

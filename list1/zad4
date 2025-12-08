@@ -1,0 +1,6 @@
+czym jest chaos monkey?
+
+otóż jest to oprogramowanie które losowo wyłącza uruchomione maszyny wirtualne i kontenery na produkcji 
+
+po co tego używać, aby zobaczyć czy nasz system jest odporny na losowe wyłączanie sie instancji oraz monitorowanie tego jak ten system się zachowuje
+

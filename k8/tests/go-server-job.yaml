@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: go-server-task
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: go-server-task
+          image: curlimages/curl:8.11.0
+          command: ["sh", "-c", "curl -s http://go-server:8080/setStr && echo OK"]

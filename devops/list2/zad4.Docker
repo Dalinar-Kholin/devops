@@ -1,0 +1,13 @@
+FROM ubuntu:22.04
+# RUN apt-get update
+# RUN apt-get install -y curl
+# teraz apt update może być cachowane osobno niż instatll przez co install wykona się niepoprawnie przez co zacznie rzucać błędami, poprawnie będzie
+RUN apt-get update \
+    apt-get install -y curl
+
+FROM alpine
+ENV ADMIN_USER="mark"
+RUN echo $ADMIN_USER > ./mark
+RUN unset ADMIN_USER
+
+# mimo że chcemy usunąć ADMIN_USER to nie jest usuwane z env, ponieważ env jest trwały w metadanych obrazu

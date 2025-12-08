@@ -7,7 +7,7 @@ COPY . .
 RUN gcc nice.c -o nice
 
 # Stage 2
-FROM gcr.io/distroless/cc-debian12 AS final
+FROM ubuntu:22.04 AS final
 WORKDIR /app
 COPY --from=build /build .
 CMD ["./nice"]

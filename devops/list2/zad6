@@ -1,0 +1,5 @@
+docker tworzy warstwy na bazie hahsa poprzednich warstw oraz obecnej
+
+każda warstwa to niezmienny snapshot systemu plików po wykonaniu instrukcji / metadane takie jak obecny katalog itd
+
+

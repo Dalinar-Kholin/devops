@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: zad2
+spec:
+  # tryb "indexed": każda completion ma swój index 0..completions-1
+  completionMode: Indexed
+  completions: 10        # ile zadań łącznie (10 shardów)
+  parallelism: 3         # max ile Podów równolegle (3 pracuje naraz)
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: worker
+          image: zad2:v1
+          env:
+            # przekazujemy index zadania jako zmienną środowiskową
+            - name: $JOB_INDEX
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+          volumeMounts:
+            - name: results
+              mountPath: /data
+      volumes:
+        - name: results
+          persistentVolumeClaim:
+            claimName: job-results-pvc

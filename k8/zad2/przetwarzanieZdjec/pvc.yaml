@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: job-results-pvc
+spec:
+  accessModes:
+    - ReadWriteMany            # typ dostępu: jeden node naraz
+  resources:
+    requests:
+      storage: 1Gi 
