@@ -1,0 +1,17 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: http-app-scaledobject
+spec:
+  scaleTargetRef:
+    name: fib-server
+    kind: Deployment
+    apiVersion: apps/v1
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus
+        threshold: "5"
+        query: sum(rate(http_requests_total[1m]))

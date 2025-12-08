@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: photo-ingres
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/a"
+            backend:
+              service:
+                name: service-a
+                port:
+                  number: 80
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/b"
+            backend:
+              service:
+                name: service-b
+                port:
+                  number: 80
