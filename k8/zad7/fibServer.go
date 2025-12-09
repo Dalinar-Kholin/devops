@@ -1,7 +1,6 @@
 package main
 
 import (
-	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -32,16 +31,12 @@ func main() {
 	})
 
 	r.GET("/", func(c *gin.Context) {
-		_, err := http.Get("http://prometheus/inc")
-		if err != nil {
-			c.JSON(200, gin.H{"error": err.Error()})
-			return
-		}
 		opsProcessed.Inc()
 		res := c.Request.URL.Query().Get("i")
 		i, err := strconv.Atoi(res)
 		if err != nil {
-			panic(err)
+			c.Status(200)
+			return
 		}
 		c.JSON(200, gin.H{
 			"res": fibb(i),

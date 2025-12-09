@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fced56c5-a06a-49c5-879e-e4a8bfb53afc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../zad6.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/devOps.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rabbitMq/client/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rabbitMq/client/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rabbitMq/client/producer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../rabbitMq/client/producer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rabbitMq/consumer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../rabbitMq/consumer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rabbitMq/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../rabbitMq/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rabbitMq/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../redis/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../redis/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/../redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpleServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/simpleServer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/CONTRIBUTORS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/dce.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/doc.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/hash.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/marshal.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/node.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/node_js.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/node_net.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/null.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/sql.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/time.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/util.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/uuid.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/version1.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/version4.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/version6.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/google/uuid/version7.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/klauspost/cpuid/v2/CONTRIBUTING.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/klauspost/cpuid/v2/CONTRIBUTING.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/executor.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/executor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/go_above_19.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/go_above_19.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/go_below_19.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/go_below_19.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/unbounded_executor.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/modern-go/concurrent/unbounded_executor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/golang.org/x/net/http2/http2.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/golang.org/x/net/http2/http2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/golang.org/x/tools/go/packages/golist.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/golang.org/x/tools/go/packages/golist.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/golang.org/x/tools/go/packages/golist_overlay.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/golang.org/x/tools/go/packages/golist_overlay.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/golang.org/x/tools/internal/modindex/lookup.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/golang.org/x/tools/internal/modindex/lookup.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/golang.org/x/tools/internal/packagesinternal/packages.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/golang.org/x/tools/internal/packagesinternal/packages.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zad7/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../zad7/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zad7/go.sum" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file://$USER_HOME$/sdk/go1.25.3" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="36biKDU1mRkJBWVQSZcriGDMcuY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.GoLinterPluginOnboarding": "true",
+    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "master",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/home/dalinarkholin/uczelnia/devops/k8/tests",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-f466f9b0953e-146d08934cbf-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-252.27397.100" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-GO-252.27397.100" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fced56c5-a06a-49c5-879e-e4a8bfb53afc" name="Changes" comment="" />
+      <created>1765281605380</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765281605380</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

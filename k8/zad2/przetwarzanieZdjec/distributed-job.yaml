@@ -3,7 +3,6 @@ kind: Job
 metadata:
   name: zad2v2
 spec:
-  # tryb "indexed": każda completion ma swój index 0..completions-1
   completionMode: Indexed
   completions: 10
   parallelism: 3
