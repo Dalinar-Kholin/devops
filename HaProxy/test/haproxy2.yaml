@@ -1,0 +1,64 @@
+# kubectl -n kube-system get svc kube-dns -o wide # aby znaleźć IP servera dns
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: haproxy-config-2
+data:
+  haproxy.cfg: |
+    global
+      log stdout format raw local0
+      maxconn 2048
+
+    defaults
+      log global
+      mode http
+
+    resolvers kube_dns
+     nameserver dns1 10.96.0.10:53
+      resolve_retries 3
+      timeout resolve 1s
+      timeout retry   1s
+      hold valid      1m
+
+    frontend fe_http
+      bind :80
+      default_backend be_stable
+    
+
+    backend be_stable
+      cookie SRV insert indirect nocache dynamic
+      dynamic-cookie-key superSekret123
+      server-template s 10 simple-server-hl.default.svc.cluster.local:80 check resolvers kube_dns init-addr none
+      
+      retries 1
+      retry-on 500
+      option redispatch
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: haproxy
+  template:
+    metadata:
+      labels:
+        app: haproxy
+    spec:
+      containers:
+        - name: haproxy
+          image: haproxy:2.9
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: cfg
+              mountPath: /usr/local/etc/haproxy/haproxy.cfg
+              subPath: haproxy.cfg
+      volumes:
+        - name: cfg
+          configMap:
+            name: haproxy-config-2

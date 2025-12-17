@@ -1,0 +1,121 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: haproxy-config
+data:
+  haproxy.cfg: |
+    global
+      log stdout format raw local0
+      maxconn 2048
+
+    defaults
+      log global
+      mode http
+      option httplog
+      timeout connect 5s
+      timeout client  30s
+      timeout server  30s
+
+    resolvers kube_dns
+     nameserver dns1 10.96.0.10:53
+      resolve_retries 3
+      timeout resolve 1s
+      timeout retry   1s
+      hold valid      1m
+
+    frontend fe_http
+      bind :80
+
+      # (c) Dodanie nagłówka do requestu przed wysłaniem do serwera:
+      http-request add-header X-Added-By "haproxy"
+      http-request add-header X-Request-Id %[unique-id]
+
+      # (d.i) Odrzuć wget po User-Agent:
+      acl is_wget hdr_sub(User-Agent) -i wget
+      http-request deny deny_status 403 if is_wget
+
+      # (d.ii) Rate limit per IP:
+      # Tabela w frontend, zliczanie requestów / 10s
+      stick-table type ip size 100k expire 10s store http_req_rate(10s)
+      http-request track-sc0 src
+      acl too_fast sc_http_req_rate(0) gt 20
+      http-request deny deny_status 429 if too_fast
+
+      # (b) Kanarek: ustaw % ruchu (tu: 10%)
+      http-request set-var(txn.r) rand(100)
+  
+      use_backend be_canary if { var(txn.r) -m int lt 10 }
+      default_backend be_stable
+
+    backend be_stable
+      # (a) Sticky session po źródłowym IP:
+      balance source
+      stick-table type ip size 100k expire 30m
+      stick on src
+
+      option httpchk GET /
+      # Headless Service -> DNS daje IP podów
+      server-template s 10 echo-stable-hl.default.svc.cluster.local:80 check resolvers kube_dns init-addr none
+
+      retries 2
+      retry-on 500 502 503 504
+      option redispatch
+  
+      http-response del-header X-Powered-By
+      http-response del-header X-Debug
+
+    backend be_canary
+      balance source
+      stick-table type ip size 100k expire 30m
+      stick on src
+
+      option httpchk GET /
+      server-template c 10 echo-canary-hl.default.svc.cluster.local:80 check resolvers kube_dns init-addr none
+
+      # Dodatkowo oznacz odpowiedzi kanarka (łatwiejsza demonstracja)
+      http-response add-header X-Canary "true"
+      http-response del-header X-Powered-By
+      http-response del-header X-Debug
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: haproxy
+  template:
+    metadata:
+      labels:
+        app: haproxy
+    spec:
+      containers:
+        - name: haproxy
+          image: haproxy:2.9
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: cfg
+              mountPath: /usr/local/etc/haproxy/haproxy.cfg
+              subPath: haproxy.cfg
+      volumes:
+        - name: cfg
+          configMap:
+            name: haproxy-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: haproxy-svc
+spec:
+  selector:
+    app: haproxy
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: NodePort

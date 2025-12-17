@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: haproxy-config
+data:
+  haproxy.cfg: |
+    global
+      log stdout format raw local0
+
+    defaults
+      mode http
+      timeout connect 5s
+      timeout client  30s
+      timeout server  30s
+
+    frontend fe_http
+      bind *:80
+      default_backend be_http
+
+    backend be_http
+      balance roundrobin
+      # tu wstawisz docelową konfigurację (np. sticky po cookie/IP)
+      server s1 10.0.0.1:8080 check
+      server s2 10.0.0.2:8080 check
